@@ -1,10 +1,10 @@
-import math
-def fsin2(N,n,x):
+import math 
+def fsin2(N,n,x): #функция принимает номер х элемента мозайки и возвращает включать его в запрос (1) или нет (0)
   eps=0.1
   y = math.sin(math.pi*(2**n)*(x-eps)/N)>0
   return y
 
-def Checker2(n,N):
+def Checker2(n,N): #возвращает список элементов мозайки на проверку
   a=list(range(1,N+1))
   elems_for_check=[]
   for i in a:
@@ -13,7 +13,7 @@ def Checker2(n,N):
 
   return elems_for_check
 
-def End_control(tuple1):
+def End_control(tuple1): #проверка для завершения работы. Возвращает список чисел элементов во множествах картежа, индексы множеств из >1 элемента, число множеств из одного элемента
   num_elems=[]
   num_elems_index=[]
   k=0
@@ -23,8 +23,6 @@ def End_control(tuple1):
       k=k+1
     else:
       num_elems_index.append(i)
-
-
   return (num_elems,num_elems_index, k)
 
 N=input()
@@ -50,17 +48,13 @@ else:
     for i in range(len(t0)):
       t1=t1+(t0[i].intersection(a1),t0[i].difference(a1))
 
-
-    print(t1)
-
     num_elems,num_elems_index, k = End_control(t1)
-    print('k=',k)
 
 
-    if k>0:
+    if k>0: #завершение цикла
       check_last=[]
       for i in range(len(num_elems_index)):
-        check_last.append(str(num_elems_index[i]+i+1))
+        check_last.append(str(num_elems_index[i]+i+1)) #номера первых элементов во множествах из 2 элементов
 
       print('CHECK', ' '.join(check_last))
 
